@@ -62,6 +62,7 @@ export class Loginpage {
    const selector = 'text=People >> nth=1';
    await this.page.waitForSelector(selector, { state: 'visible', timeout: 20000 });
     await this.page.click(selector);
+    await this.page.waitForURL('https://apps.usw2.pure.cloud/admin/#/directory/peopleV3')
     expect(this.page.url()).toBe('https://apps.usw2.pure.cloud/admin/#/directory/peopleV3');
     await this.page.waitForTimeout(3000);
     }
