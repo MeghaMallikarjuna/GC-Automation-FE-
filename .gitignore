@@ -50,4 +50,4 @@ Thumbs.db
 *.tsbuildinfo
 
 #Ignore Scrrenshot
-./Scrrenshot
+*.png
