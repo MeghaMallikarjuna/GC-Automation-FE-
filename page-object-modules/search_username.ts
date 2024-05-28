@@ -1,8 +1,8 @@
 import { Page, expect} from "@playwright/test";
 import { Selectors } from '@playwright/test';
+import { config } from "../config";
 
-
-export class LoginPage {
+export class Login {
     
         readonly page:Page
 
@@ -13,22 +13,12 @@ export class LoginPage {
     }
 
     async loginpage () { 
-
-            this.page.locator('auth-form',{has: this.page.locator('.pc-only')})
-            const emailfield1 = this.page.getByRole('textbox', {name:'email'})
-            await emailfield1.fill('megha.m@radarr.com')
-            const emailValue = await emailfield1.inputValue()
-            expect(emailValue).toEqual('megha.m@radarr.com')
- 
-
-            const password = this.page.getByRole('textbox', {name:'password'})
-            await password.fill('MeghaRadarr@96')
-            const passwordValue = await password.inputValue()
-            expect(passwordValue).toContain('MeghaRadarr@96')
-
-            const loginButton = this.page.getByRole('button', {name:'Log In'})
-            await loginButton.click()
-           await this.page.waitForURL('https://login.usw2.pure.cloud/#/splash');
+             
+        this.page.locator('auth-form',{has: this.page.locator('.pc-only')})
+        await this.page.getByRole('textbox', {name:'email'}).fill(config.username)
+        await this.page.getByRole('textbox', {name:'password'}).fill(config.password)
+        await this.page.getByRole('button', {name:'Log In'}).click()
+        await this.page.waitForURL('https://login.usw2.pure.cloud/#/splash');
         expect(this.page.url()).toBe('https://login.usw2.pure.cloud/#/splash');
     }
 

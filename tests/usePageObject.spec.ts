@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { PageManager } from '../page-object-modules/page_manager'
+import { config } from '../config';
 
 
 test.describe('Login Page', () => {
