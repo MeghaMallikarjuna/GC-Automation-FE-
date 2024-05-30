@@ -17,7 +17,7 @@ pipeline {
         stage('Install Playwright') {
             steps {
                 // Install Playwright
-                sh 'npm install playwright'
+                sh 'npm init playwright@latest'
             }
         }
         stage('Run tests') {
