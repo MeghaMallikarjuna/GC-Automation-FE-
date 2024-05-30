@@ -1,4 +1,7 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig} from '@playwright/test';
+import { chromium, firefox, webkit } from 'playwright';
+
+
 
 /**
  * Read environment variables from file.
@@ -31,21 +34,22 @@ export default defineConfig({
   },
 
   /* Configure projects for major browsers */
-  projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
+  // projects: [
+  //   {
+  //     name: 'chromium',
+  //     use: { ...devices['Desktop Chrome'] },
+  //     headless: true,
+  //   },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+  //   {
+  //     name: 'firefox',
+  //     use: { ...devices['Desktop Firefox'] },
+  //   },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+  //   {
+  //     name: 'webkit',
+  //     use: { ...devices['Desktop Safari'] },
+  //   },
 
     /* Test against mobile viewports. */
     // {
@@ -66,7 +70,7 @@ export default defineConfig({
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
-  ],
+  //],
 
   /* Run your local dev server before starting the tests */
   // webServer: {
@@ -74,4 +78,20 @@ export default defineConfig({
   //   url: 'http://127.0.0.1:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
+  
+
 });
+
+async function runTests() {
+  const browserChromium = await chromium.launch({ headless: true });
+  const browserFirefox = await firefox.launch({ headless: true });
+  const browserWebkit = await webkit.launch();
+
+  // Your test logic goes here
+  
+  await browserChromium.close();
+  await browserFirefox.close();
+  await browserWebkit.close();
+}
+
+runTests();

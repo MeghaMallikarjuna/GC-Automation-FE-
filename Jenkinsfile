@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Run tests') {
             steps {
-                sh 'npx playwright test --headless'
+                sh 'npx playwright test'
             }
         }
         stage('Generate Report') {
