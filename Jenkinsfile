@@ -7,14 +7,12 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/MeghaMallikarjuna/GC-Automation-FE-'
             }
         }
-        stage('Install dependencies') {
+        stage('Install Node.js dependencies') {
             steps {
                 sh 'npm install'
             }
         }
-
-        stage ('Install dependencies')
-        {
+        stage('Install Playwright') {
             steps {
                 sh 'npm init playwright@latest'
             }
@@ -24,11 +22,14 @@ pipeline {
                 sh 'npx playwright test --headless'
             }
         }
-        stage('Result') {
+        stage('Generate Report') {
             steps {
-                sh 'npx playwright show-report'
+                script {
+                    sh 'npx playwright show-report'
+                }
+                // Optionally, archive the report files for future reference
+                archiveArtifacts artifacts: 'report/**/*', allowEmptyArchive: true
             }
         }
     }
 }
-        
