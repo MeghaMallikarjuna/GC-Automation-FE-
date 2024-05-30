@@ -14,7 +14,7 @@ test.describe('Login Page', () => {
         await pm.collaborate().clickonCollborate(); 
         await pm.admin().clickonAdminSection(); 
         await pm.people().clickonPeopleSection();
-        await pm.searchforname().searchNameforMegha1(); 
+        await pm.searchforname().searchNameforMegha1();
     });
 
 });
