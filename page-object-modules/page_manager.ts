@@ -14,7 +14,7 @@ export class PageManager {
     }
 
     login() {
-        return new Login(this.page);
+        return new Login(this.page)
     }
 
     collaborate (){
