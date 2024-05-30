@@ -27,10 +27,10 @@ pipeline {
             }
         }
         stage('Generate Report') {
-            steps {
-                // Generate report (if applicable)
-                // You may add your report generation command here
-            }
-        }
+    steps {
+        sh 'npm install mochawesome mochawesome-report-generator --save-dev'
+        sh 'npx mochawesome --reporter html --reporter-options reportDir=reports'
+    }
+}
     }
 }
