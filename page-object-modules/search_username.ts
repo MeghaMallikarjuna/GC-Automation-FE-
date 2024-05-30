@@ -11,7 +11,9 @@ export class Login {
             this.page = page
 
     }
-
+    /* 
+       Log in to Genesys Cloud using valid credentials
+    */
     async loginpage () { 
              
         this.page.locator('auth-form',{has: this.page.locator('.pc-only')})
@@ -30,6 +32,10 @@ export class Login {
         expect(pageLoadedData).toContain('Welcome to Genesys Cloud');
     }
 }
+
+    /* 
+      Click on the Collaborate section
+    */
 
 export class Collaborate {
     
@@ -50,6 +56,11 @@ export class Collaborate {
     }
 }
 
+     /* 
+       Click on the Admin Section 
+
+    */
+
     export class Admin {
     
         readonly page:Page
@@ -68,6 +79,10 @@ export class Collaborate {
         
     }
 }
+
+    /* 
+       Click on the People section and using search bar, search for username
+    */
 
     export class People {
     
