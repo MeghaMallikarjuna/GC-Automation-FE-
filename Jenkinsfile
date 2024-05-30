@@ -12,14 +12,16 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Compile') {
+
+        stage ('Install dependencies')
+        {
             steps {
-                sh 'tsc'
+                sh 'npm init playwright@latest'
             }
         }
-        stage('Run') {
+        stage('Run tests') {
             steps {
-                sh 'npx playwright test'
+                sh 'npx playwright test --headless'
             }
         }
         stage('Result') {
@@ -29,3 +31,4 @@ pipeline {
         }
     }
 }
+        
