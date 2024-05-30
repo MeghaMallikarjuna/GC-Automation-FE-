@@ -4,31 +4,32 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/MeghaMallikarjuna/GC-Automation-FE-'
+                // Checkout your Git repository
+                git branch: 'main', url: 'https://github.com/yourusername/your-repo.git'
             }
         }
         stage('Install Node.js dependencies') {
             steps {
+                // Install Node.js dependencies
                 sh 'npm install'
             }
         }
         stage('Install Playwright') {
             steps {
-                sh 'npm init playwright@latest'
+                // Install Playwright
+                sh 'npm install playwright'
             }
         }
         stage('Run tests') {
             steps {
+                // Run Playwright tests
                 sh 'npx playwright test'
             }
         }
         stage('Generate Report') {
             steps {
-                script {
-                    sh 'npx playwright show-report'
-                }
-                // Optionally, archive the report files for future reference
-                archiveArtifacts artifacts: 'report/**/*', allowEmptyArchive: true
+                // Generate report (if applicable)
+                // You may add your report generation command here
             }
         }
     }
