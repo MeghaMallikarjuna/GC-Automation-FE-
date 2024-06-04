@@ -10,3 +10,5 @@ If you want to change the Node.js version, then use this command: nvm use 14.17.
 
 //Run
 1. npx playwright test OR npx playwright test -ui 
+
+// username and password 
